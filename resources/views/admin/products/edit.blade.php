@@ -11,13 +11,13 @@
             <div class="mb-4">
                 <label for="name" class="block text-gray-700 mb-2">Nama Produk</label>
                 <input type="text" id="name" name="name" value="{{ old('name', $product->name) }}"
-                    class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    class="w-full p-2 border rounded">
             </div>
 
             <div class="mb-6">
                 <label for="detail" class="block text-gray-700 mb-2">Detail Produk</label>
                 <textarea id="detail" name="detail" rows="4"
-                    class="w-full p-2 border rounded focus:outline-none focus:ring-2 focus:ring-blue-500">{{ old('detail', $product->detail) }}</textarea>
+                    class="w-full p-2 border rounded">{{ old('detail', $product->detail) }}</textarea>
             </div>
 
             <div class="flex gap-3">
@@ -31,8 +31,8 @@
 @endsection
 
 @section('popup')
-    <div id="popup-notification" x-data="{ open: false }" x-show="open" x-transition
-        class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-30" style="display: none">
+    <div x-data="{ open: false }" x-show="open"
+        class="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-30" x-cloak>
         <div class="bg-white rounded-xl shadow p-6 w-80 text-center">
             <h2 class="text-lg font-bold mb-4 text-navy">Perhatian</h2>
             <p class="text-muted mb-4">Kamu harus mengisi data produk terlebih dahulu!</p>
@@ -43,15 +43,18 @@
 @endsection
 
 @push('scripts')
-    <script defer>
+    <script>
         document.addEventListener('DOMContentLoaded', function () {
-            document.querySelector('#product-form').addEventListener('submit', function (event) {
-                const name = document.querySelector('input[name="name"]').value.trim();
-                const detail = document.querySelector('textarea[name="detail"]').value.trim();
+            const form = document.querySelector('#product-form');
+            const popup = document.querySelector('[x-data]');
+
+            form.addEventListener('submit', function (e) {
+                const name = form.querySelector('input[name="name"]').value.trim();
+                const detail = form.querySelector('textarea[name="detail"]').value.trim();
 
                 if (!name || !detail) {
-                    event.preventDefault();
-                    document.querySelector('#popup-notification').__x.$data.open = true;
+                    e.preventDefault();
+                    popup.__x.$data.open = true;
                 }
             });
         });

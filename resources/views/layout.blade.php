@@ -40,17 +40,14 @@
 
     <!-- Footer -->
     <footer class="bg-pale text-center text-xs py-4 text-navy">
-        &copy; {{ now()->year }} Inventory Dashboard | Made by M Lintang A W-2424370158
+        &copy; {{ now()->year }} Inventory Dashboard | Made by M Lintang A W
     </footer>
 
     <script>
         lucide.createIcons();
     </script>
-
-    <!-- Popup -->
+    
     @yield('popup')
-
-    <!-- Scripts -->
     @stack('scripts')
 </body>
 
