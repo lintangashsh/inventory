@@ -3,7 +3,7 @@
 @section('content')
     <div class="min-h-screen bg-cloud rounded-xl p-8">
         <div class="flex justify-between items-center mb-6">
-            <h1 class="text-3xl font-bold text-navy">📦 Inventory Products</h1>
+            <h1 class="text-3xl font-bold text-navy">📦 Produk Inventori</h1>
             @if (auth()->user()->role === 'admin')
                 <a href="{{ route('admin.products.create') }}"
                     class="bg-ocean text-white px-4 py-2 rounded hover:bg-navy transition-all">
@@ -13,7 +13,7 @@
                 <a href="{{ route('products.create') }}"
                     class="btn bg-blue-700 text-white font-semibold hover:bg-blue-800 duration-300 rounded-lg">
                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-circle-plus-icon lucide-circle-plus"><circle cx="12" cy="12" r="10"/><path d="M8 12h8"/><path d="M12 8v8"/></svg>
-                    Tambah
+                    Tambah Produk
                 </a>
             @endif
         </div>
@@ -30,9 +30,9 @@
                 <thead>
                     <tr class="text-lg">
                         <th>No</th>
-                        <th>Name</th>
-                        <th>Details</th>
-                        <th>Actions</th>
+                        <th>Nama Produk</th>
+                        <th>Detail produk</th>
+                        <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -54,14 +54,14 @@
                                         onsubmit="return confirm('Are you sure?')">
                                         @csrf
                                         @method('DELETE')
-                                        <button type="submit" class="text-red-600 hover:underline">🗑️ Delete</button>
+                                        <button type="submit" class="text-red-600 hover:underline">🗑️ Hapus</button>
                                     </form>
                                 @endif
                             </td>
                         </tr>
                     @empty
                         <tr>
-                            <td colspan="4">No products found.</td>
+                            <td colspan="4">Tidak Ada Produk Tersimpan</td>
                         </tr>
                     @endforelse
                 </tbody>

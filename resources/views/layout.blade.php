@@ -8,6 +8,7 @@
     @vite('resources/css/app.css')
     <script src="https://unpkg.com/lucide@latest"></script>
     <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
+    <script src="//unpkg.com/alpinejs" defer></script>
 </head>
 
 <body class="bg-cloud text-gray-900">
@@ -22,7 +23,8 @@
                     <span class="text-sm">Halo, <strong>{{ Auth::user()->name }} 👋</strong></span>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
-                        <button type="submit" class="bg-red-400 hover:bg-red-700 text-white px-3 py-1 rounded text-sm transition">
+                        <button type="submit"
+                            class="bg-red-400 hover:bg-red-700 text-white px-3 py-1 rounded text-sm transition">
                             Keluar
                         </button>
                     </form>
@@ -40,10 +42,16 @@
     <footer class="bg-pale text-center text-xs py-4 text-navy">
         &copy; {{ now()->year }} Inventory Dashboard | Made by M Lintang A W-2424370158
     </footer>
-    
+
     <script>
         lucide.createIcons();
     </script>
+
+    <!-- Popup -->
+    @yield('popup')
+
+    <!-- Scripts -->
+    @stack('scripts')
 </body>
 
 </html>

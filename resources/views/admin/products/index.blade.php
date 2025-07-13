@@ -5,13 +5,13 @@
         <div class="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
     <h1 class="text-3xl font-bold text-slate-700 flex items-center gap-2">
         <i data-lucide="package-search" class="w-8 h-8 text-blue-700"></i>
-        Inventory Product
+        Produk Inventori
     </h1>
     <div class="flex flex-wrap gap-3">
         <a href="{{ route('admin.dashboard') }}"
             class="flex items-center gap-2 bg-muted text-white px-4 py-2 rounded-full shadow-sm hover:bg-slate-800 transition-all">
             <i data-lucide="arrow-left" class="w-5 h-5"></i>
-            Dashboard
+            Dashboard Admin
         </a>
         <a href="{{ route('admin.products.create') }}"
             class="flex items-center gap-2 bg-blue-600 text-white px-4 py-2 rounded-full shadow-sm hover:bg-blue-800 transition-all">
@@ -41,7 +41,7 @@
                         </a>
                         <a href="{{ route('admin.products.edit', $product->id) }}"
                             class="bg-green-700 text-white px-3 py-1 rounded hover:bg-green-800 transition text-sm flex items-center gap-1">
-                            <i data-lucide="edit-3" class="w-4 h-4"></i> Ubah
+                            <i data-lucide="edit-3" class="w-4 h-4"></i> Edit
                         </a>
                         <form action="{{ route('admin.products.destroy', $product->id) }}" method="POST"
                             onsubmit="return confirm('Yakin ingin menghapus produk ini?')">
@@ -57,7 +57,7 @@
             @empty
                 <div class="col-span-full text-center text-muted py-6">
                     <i data-lucide="box" class="w-12 h-12 mx-auto mb-2 text-pale"></i>
-                    Tidak ada produk ditemukan.
+                    Tidak Ada Produk Tersimpan
                 </div>
             @endforelse
         </div>

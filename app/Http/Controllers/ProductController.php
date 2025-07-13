@@ -24,7 +24,7 @@ class ProductController extends Controller
             ->with('i', (request()->input('page', 1) - 1) * 10);
     }
 
-    // Tampilkan form tambah produk masih untuk admin
+    // Tampilkan form tambah produk untuk admin
     public function create()
     {
         return view('admin.products.create');
@@ -36,7 +36,7 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    // Simpan produk baru
+    // Simpan produk baru untuk admin
     public function store(Request $request)
     {
         $request->validate([
@@ -49,10 +49,10 @@ class ProductController extends Controller
             'detail' => $request->detail,
         ]);
 
-        return redirect()->route('admin.products.index')->with('success', 'Product created successfully.');
+        return redirect()->route('admin.products.index')->with('success', 'Produk berhasil ditambahkan!');
     }
 
-    // Simpan produk baru User
+    // Simpan produk baru untuk User
     public function storeUser(Request $request)
     {
         $request->validate([
@@ -65,11 +65,17 @@ class ProductController extends Controller
             'detail' => $request->detail,
         ]);
 
-        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+        return redirect()->route('products.index')->with('success', 'Produk berhasil ditambahkan!');
     }
 
-    // Tampilkan detail produk
+    // Tampilkan detail produk untuk admin
     public function show(Product $product)
+    {
+        return view('admin.products.show', compact('product'));
+    }
+
+    // Tampilkan detail produk untuk user
+    public function showUser(Product $product)
     {
         return view('products.show', compact('product'));
     }
@@ -93,7 +99,7 @@ class ProductController extends Controller
             'detail' => $request->detail,
         ]);
 
-        return redirect()->route('products.index')->with('success', 'Product updated successfully.');
+        return redirect()->route('admin.products.index')->with('success', 'Produk berhasil diupdate!');
     }
 
     // Hapus produk (admin only)
@@ -101,6 +107,6 @@ class ProductController extends Controller
     {
         $product->delete();
 
-        return redirect()->route('admin.products.index')->with('success', 'Product deleted successfully.');
+        return redirect()->route('admin.products.index')->with('success', 'Produk berhasil dihapus!');
     }
 }
