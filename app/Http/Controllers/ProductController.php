@@ -52,6 +52,22 @@ class ProductController extends Controller
         return redirect()->route('admin.products.index')->with('success', 'Product created successfully.');
     }
 
+    // Simpan produk baru User
+    public function storeUser(Request $request)
+    {
+        $request->validate([
+            'name' => 'required|string|max:255',
+            'detail' => 'nullable|string',
+        ]);
+
+        Product::create([
+            'name' => $request->name,
+            'detail' => $request->detail,
+        ]);
+
+        return redirect()->route('products.index')->with('success', 'Product created successfully.');
+    }
+
     // Tampilkan detail produk
     public function show(Product $product)
     {
