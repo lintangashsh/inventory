@@ -3,7 +3,10 @@
 @section('content')
     <div class="min-h-screen bg-cloud rounded-xl p-8">
         <div class="flex justify-between items-center mb-6">
-            <h1 class="text-3xl font-bold text-navy">📦 Produk Inventori</h1>
+            <h1 class="text-3xl font-bold text-slate-700 flex items-center gap-2">
+                <i data-lucide="package-search" class="w-8 h-8 text-blue-700"></i>
+                Produk Inventori
+            </h1>
             @if (auth()->user()->role === 'admin')
                 <a href="{{ route('admin.products.create') }}"
                     class="bg-ocean text-white px-4 py-2 rounded hover:bg-navy transition-all">
@@ -45,7 +48,7 @@
                                 <a href="{{ auth()->user()->role === 'admin' ? route('admin.products.show', $product) : route('products.show', $product) }}"
                                     class="btn btn-success">Lihat
                                 </a>
-                                
+
 
                                 @if(auth()->user()->role === 'admin')
                                     <a href="{{ route('admin.products.edit', $product) }}"

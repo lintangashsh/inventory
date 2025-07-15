@@ -20,7 +20,7 @@
 
             @auth
                 <div class="flex items-center space-x-4">
-                    <span class="text-sm">Halo, <strong>{{ Auth::user()->name }} 👋</strong></span>
+                    <span class="text-sm">Halo, <strong>{{ Auth::user()->name }}</strong></span>
                     <form action="{{ route('logout') }}" method="POST">
                         @csrf
                         <button type="submit"
